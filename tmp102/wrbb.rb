@@ -1,5 +1,6 @@
 @APTemp = 0x49
 Serial.begin(0, 115200)
+Serial.begin(1, 115200)
 
 #Serial.println(0, "test")
 
@@ -17,7 +18,10 @@ delay(300)
   temp_h, temp_l = s1, s2
   temp = ((temp_h << 4) + (temp_l >> 4)) * 0.0625
 
-  Serial.println(0, temp.inspect)
+  t = temp.round(1).to_s
+
+  Serial.println(0, t)
+  Serial.println(1, t)
   delay(1000)
 end
 
