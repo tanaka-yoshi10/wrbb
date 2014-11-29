@@ -1,5 +1,6 @@
 @APTemp = 0x49
 Serial.begin(0, 9600)
+Serial.begin(1, 9600)
 
 sw = 0
 
@@ -25,6 +26,7 @@ loop do
 
       t = temp.round(1).to_s
       Serial.println(0, t)
+      Serial.println(1, t)
     when "l"
       Serial.println(0, sw.to_s)
     when "1"
