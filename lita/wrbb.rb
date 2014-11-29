@@ -22,8 +22,10 @@ def executeCommand(command)
     Serial.println(0, @sw.to_s)
   when "1"
     @sw = 1
+    Srv.write(0, 0)
   when "0"
     @sw = 0
+    Srv.write(0, 180)
   end
 end
 
@@ -31,6 +33,9 @@ Serial.begin(0, 9600)
 Serial.begin(1, 9600)
 
 @sw = 0
+
+Srv.attach(0 , 9)
+Srv.write(0, 10)
 
 I2c.sdascl(17,16)
 delay(300)
