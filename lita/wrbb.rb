@@ -15,7 +15,7 @@ def executeCommand(command)
     temp_h, temp_l = s1, s2
     temp = ((temp_h << 4) + (temp_l >> 4)) * 0.0625
 
-    t = temp.round(1).to_s
+    t = myRound(temp)
     Serial.println(0, t)
     Serial.println(1, t)
   when "l"
@@ -27,6 +27,12 @@ def executeCommand(command)
     @sw = 0
     Srv.write(0, 180)
   end
+end
+
+def myRound(value)
+  str = (value*10).round(0).to_s
+  str = "0" + str if str.length == 1
+  str[0..-2] + "." + str[-1]
 end
 
 Serial.begin(0, 9600)
